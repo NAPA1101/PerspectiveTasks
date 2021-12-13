@@ -1,0 +1,47 @@
+<table border='1'>
+    <tr>
+        <th>Id Продукта</th>
+        <th>Отзыв</th>
+        <th>Дата отзыва</th>
+        <th>Имя пользователя</th>
+        <th>Email пользователя</th>
+        <th>Бонус</th>
+    </tr>
+<?php
+    $collection = $block->getResult();
+    foreach($collection as $item){
+?>
+<tr>
+    <td><?php echo $item->getData('product_id'); ?></td>
+    <td><?php echo $item->getData('text_review'); ?></td>
+    <td><?php echo $item->getData('data_review'); ?></td>
+    <td><?php echo $item->getData('name'); ?></td>
+    <td><?php echo $item->getData('email'); ?></td>
+    <td><?php echo $item->getData('bonus'); ?></td>
+</tr>
+    <?php } ?>
+</table> 
+<h3>Подсчитать сумму балов за отзывы, оставленные конкретным покупателем в течение текущего месяца</h3><br>
+
+<?php 
+    echo "<b>Отзывы пользователя: Andrey </b><br>";
+?>
+<table border='1'>
+    <tr>
+        <th>Отзыв</th>
+        <th>Дата отзыва</th>
+    </tr>
+<?php 
+        $bonus = 0;
+        $prodCollection = $block->getFilter('Andrey');
+        foreach ($prodCollection as $product) {
+            echo "<tr>";
+                $bonus += $product->getData('bonus');
+                    echo "<td>" . $product->getData('text_review') . "</td>";
+                    echo "<td>" . $product->getData('data_review') . "</td>";
+            echo "<tr>";
+        }
+    echo "<b>Сумма балов: " . $bonus . "</b><br>"; 
+?>
+</table>
+

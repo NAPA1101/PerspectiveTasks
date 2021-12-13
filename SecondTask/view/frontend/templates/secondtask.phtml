@@ -1,0 +1,22 @@
+<h3> Вывод через список: </h3>
+<?php
+$ids = 23;
+$categoryProducts = $block->getProductCollectionByCategories($ids);
+foreach ($categoryProducts as $product) {
+    echo '<b>Name product: </b>' . $product->getName() . '<br>' . '<b>Sku: </b>' . $product->getSku() . '<br>' . '<b>Price: </b>' . round($product->getPrice(), 0) . '<br>';
+}
+?>
+<h3> Вывод через таблицу: </h3>
+<table border=1>
+    <tr>
+        <th> Name product </th>
+        <th> Sku </th>
+        <th> Price </th>
+    </tr>
+<?php foreach ($categoryProducts as $product) {
+    echo '<tr>';
+    echo '<td>' . $product->getName() . '</td>' . '<td>' . $product->getSku() . '</td>' . '<td>' . round($product->getPrice(), 0) . '</td>';
+    echo '</tr>';
+}
+?>
+</table>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="declarative_table">
+		<column xsi:type="int" name="entity_id" padding="10" identity="true" unsigned="true" nullable="false" comment="Entity Id"/>
+		<column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product Id"/>
+		<column xsi:type="text" name="text_review" comment="Text review"/>
+		<column xsi:type="date" name="data_review" comment="Data review"/>
+		<column xsi:type="text" name="name" comment="Name"/>
+        <column xsi:type="text" name="email" comment="Email"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+	</table>
+</schema>

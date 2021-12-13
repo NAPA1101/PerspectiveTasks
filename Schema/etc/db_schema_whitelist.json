@@ -1,0 +1,15 @@
+{
+    "declarative_table": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "text_review": true,
+            "data_review": true,
+            "name": true,
+            "email": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
