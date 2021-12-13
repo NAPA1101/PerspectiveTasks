@@ -1,0 +1,35 @@
+<table border='1'>
+    <tr>
+        <th>Id</th>
+        <th>Имя склада</th>
+        <th>Адресс склада</th>
+        <th>ID каталога</th>
+        <th>ID продукта</th>
+        <th>Количество на складе</th>
+        <th>Время поставки</th>
+    </tr>
+<?php
+    $collection = $block->getResult();
+    foreach($collection as $item){
+?>
+<tr>
+    <td><?php echo $item->getData('post_id'); ?></td>
+    <td><?php echo $item->getData('namewar'); ?></td>
+    <td><?php echo $item->getData('addwar'); ?></td>
+    <td><?php echo $item->getData('idcat'); ?></td>
+    <td><?php echo $item->getData('idprod'); ?></td>
+    <td><?php echo $item->getData('kolprod'); ?></td>
+    <td><?php echo $item->getData('dataprod'); ?></td>
+</tr>
+    <?php } ?>
+</table> 
+<br>
+<h3>3.2 Получить имена продуктов с указанного склада (WareHouse#1)</h3><br>
+<?php 
+    $_namewar = $block->getNameProd('WareHouse#1');
+        foreach($_namewar as $id) {
+        $_product = $block->getProductById($id);
+        echo $_product->getName();
+        echo '<br>';
+    }
+?>

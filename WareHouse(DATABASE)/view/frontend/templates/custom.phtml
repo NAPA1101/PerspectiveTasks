@@ -1,0 +1,27 @@
+<table border='1'>
+    <tr>
+        <th>Название склада</th>
+        <th>Имя продукта</th>
+        <th>Изображение продукта</th>
+        <th>SKU продукта</th>
+        <th>Цена продукта</th>
+    </tr>
+<?php 
+    $collection = $block->getCatProd('14');
+    foreach($collection as $item => $catProd) {
+        echo "<tr>";
+        foreach($catProd as $key => $value) {
+            if ($key == 0) { 
+                echo "<td>" . $value . "</td>";
+            } else {
+                $_product = $block->getProductById($value);
+                echo "<td> " . $_product->getName() . "</td>";
+                echo "<td><img src='" . $block->getProductImage($value)."' height='100' width='100'/></td>";
+                echo "<td> " . $_product->getSku() . "</td>";
+                echo "<td> " . round($_product->getPrice(),2) . "</td>";
+                echo "</tr>";
+            }
+        }
+    }
+?>
+</table>

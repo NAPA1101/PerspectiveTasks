@@ -1,0 +1,11 @@
+<?php
+$product = $block->getCurrentProduct();
+$post = $this->_postFactory->create();
+        $collection = $post->getCollection();
+        foreach($collection as $item) {
+            if($item->getData('idprod') == $product->getId()) {
+                echo "Название склада: " . $item->getData('namewar') . '<br>';
+                echo "Адресс: " . $item->getData('addwar') . '<br>';
+                echo "Количество на складе: " . $item->getData('kolprod') . '<br>';
+            }
+        }
