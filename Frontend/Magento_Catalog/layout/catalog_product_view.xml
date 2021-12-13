@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- 2.2 + quantity -->
+        <move element ="product.info.type"  destination ="product.info.price"  after="product.info.price"/>
+        <move element ="product.info.sku"  destination ="product.info.price"  after="product.info.main.perspective_custom_quantity_block"/>
+        <move element ="product.info.main.perspective_custom_quantity_block"  destination ="product.info.price"  after="product.info.type"/>
+        
+        <!-- 2.4 -->
+        <move element ="product.info.addto" destination ="page.main.title" after="page.main.title" />
+        
+        <!-- 2.3 -->
+        <referenceBlock name="product.info.options.wrapper.bottom" template="Magento_Catalog::product/view/options/wrapper/bottom.phtml">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart.additional" as="product.info.addtocart" template="Magento_Catalog::first.phtml"/>
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.addtocart.two" as="addtocart" template="Magento_Catalog::second.phtml"/>
+        </referenceBlock>
+       <move element ="product.info.options.wrapper" destination="product.info.options.wrapper.bottom" after="product.info.addtocart.additional" />
+        <!-- 2.8 -->
+        <referenceBlock name="product.info.description">
+            <arguments>
+                        <argument name="at_call" xsi:type="string">getDescription</argument>
+                        <argument name="at_code" xsi:type="string">description</argument>
+                        <argument name="css_class" xsi:type="string">description</argument>
+                        <argument name="at_label" xsi:type="string">none</argument>
+                        <argument name="title" translate="true" xsi:type="string">TEXT</argument>
+                        <argument name="sort_order" xsi:type="string">10</argument>
+            </arguments>
+        </referenceBlock>
+        <!-- 2.9 -->
+        <referenceBlock name="page.main.title">
+            <arguments>
+                <argument name="css_class" xsi:type="string">product</argument>
+                <argument name="add_base_attribute" xsi:type="string">itemprop="name"</argument>
+                <argument name="argumenttest" xsi:type="string">ARGUMENT</argument>
+                <argument name="translate" xsi:type="boolean">false</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

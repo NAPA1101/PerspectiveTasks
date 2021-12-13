@@ -1,0 +1,8 @@
+<h3>Задача 8 Get Product Collection Filter By Visibility</h3>
+<?php
+
+    $collection = $block->getProductCollection();
+    foreach ($collection as $_product) {
+    echo $_product->getName() . " - " . $_product->getProductUrl()  . " (<b>ID: " .$_product->getEntityId(). "</b>) <br>" ;
+}
+?>

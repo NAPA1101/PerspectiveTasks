@@ -1,0 +1,24 @@
+<h3>Задача 5 Product Collection (по возрастанию цены)</h3>
+<?php
+    $productOrder = $block->getProductCollectionOrderByAscending();
+    foreach ($productOrder as $product) {
+        echo round($product->getPrice(), 0) . "$ - " .$product->getName() . " (<b>ID: " .$product->getEntityId(). "</b>) <br>"  ;
+    }
+?>
+<h3>Задача 6 Get product collection</h3>
+<?php
+$productCollection = $block->getProductCollection();
+foreach ($productCollection as $product) {
+    echo $product->getName(). " (<b>ID: " .$product->getEntityId(). "</b>)" ; 
+    echo "<br>";
+}
+?>
+
+<h3>Задача 7 Get Product Collection by Category</h3>
+<?php
+$ids = [1, 2, 3, 4, 5];
+$categoryProducts = $block->getProductCollectionByCategories($ids);
+foreach ($categoryProducts as $product) {
+    echo $product->getName() . ' - ' . $product->getProductUrl() . " (<b>ID: " .$product->getEntityId(). "</b>)" .'<br />';
+}
+?>

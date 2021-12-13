@@ -1,0 +1,12 @@
+<h1>Задача 4 Get List Products from Catalog Rule Condition</h1>
+<?php
+
+$RuleProductT= $block->getCatalogPriceRuleProductIds();
+
+    foreach ($RuleProductT as $Ruleid) {
+    $product = $block->getProductId($Ruleid);
+    echo $product->getName();
+    echo '<br>';
+    }
+
+?>
